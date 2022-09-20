@@ -1,4 +1,16 @@
 body {
 	background-color: #371B58;
-	color: #000000
+	color: #FFFFFF;
+	font-family: "Roboto Mono";	
+}
+nav-bar {
+	background-color: #4C3575;
+}
+nav-bar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+nav-bar li {
+	display: inline;
 }
