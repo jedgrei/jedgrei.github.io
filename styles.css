@@ -7,11 +7,11 @@ nav-bar {
 	background-color: #4C3575;
 }
 nav-bar ul {
-	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	width: 100%
 }
 nav-bar li {
 	display: inline;
+	list-style-type: none;
 }
