@@ -5,13 +5,15 @@ body {
 }
 nav-bar {
 	background-color: #4C3575;
-}
-nav-bar ul {
 	margin: 0;
 	padding: 0;
-	width: 100%
-}
-nav-bar li {
-	display: inline;
+	width: 100%;
 	list-style-type: none;
+}
+nav-elem {
+	display: inline;
+	padding: 8px;
+}
+nav-elem :hover {
+	background-color: #7858A6;
 }
