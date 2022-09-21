@@ -1,19 +1,26 @@
 body {
+	margin: 0;
 	background-color: #371B58;
 	color: #FFFFFF;
 	font-family: "Roboto Mono";	
 }
-nav-bar {
+a {
+	text-decoration: none;
+	color: #ffffff;
+}
+.nav-bar {
 	background-color: #4C3575;
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	list-style-type: none;
 }
-nav-elem {
-	display: inline;
+.nav-elem {
+	margin: 0;
+	display: block;
+	float:left;
 	padding: 8px;
 }
-nav-elem :hover {
-	background-color: #7858A6;
+.nav-elem :hover {
+	color: #7858A6;
 }
