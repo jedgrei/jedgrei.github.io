@@ -2,24 +2,25 @@ body {
 	margin: 0;
 	background-color: #371B58;
 	color: #FFFFFF;
-	font-family: "Roboto Mono";	
+	font-family: "Roboto Mono";
 }
 a {
 	text-decoration: none;
 	color: #ffffff;
 }
 .nav-bar {
-	background-color: #4C3575;
 	margin: 0;
-	padding: 0;
 	width: 100%;
 	list-style-type: none;
+	padding: 8px 0;
+	background-color: #4C3575;
 }
 .nav-elem {
 	margin: 0;
 	display: block;
 	float:left;
 	padding: 8px;
+	background-color: #4C3575;
 }
 .nav-elem :hover {
 	color: #7858A6;
