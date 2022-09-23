@@ -12,8 +12,8 @@ a {
 	margin: 0;
 	width: 100%;
 	list-style-type: none;
-	padding: 8px 0;
 	background-color: #4C3575;
+	display: flex;
 }
 .nav-elem {
 	margin: 0;
@@ -21,6 +21,9 @@ a {
 	float:left;
 	padding: 8px;
 	background-color: #4C3575;
+}
+.nav-elem .active {
+	background-color: #371B58
 }
 .nav-elem :hover {
 	color: #7858A6;
