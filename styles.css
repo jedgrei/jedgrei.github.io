@@ -1,6 +1,7 @@
 body {
 	margin: 0;
-	background-color: #371B58;
+	/*background-color: #371B58;*/
+	background-color: linear-gradient(#371B58, #000000);
 	color: #FFFFFF;
 	font-family: "Roboto Mono";
 }
