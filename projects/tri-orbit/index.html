@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Mono">
+	<link rel="stylesheet" href="../../styles.css">
+
+    <style>
+        svg {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height:20vw;
+            width:20vw;
+	        border-radius: 25px;
+            background-color: white;
+        }
+    </style>
+
+</head>
+<body>
+	<ul class="nav-bar">
+		<!-- when running online -->
+		<li class="nav-elem"><a href="../../">home</a></li>
+		<li class="nav-elem active"><a href="../../projects">projects</a></li>
+		<li class="nav-elem"><a href="../../about">about</a></li>
+	</ul>
+
+	<div class="content-box">
+    <h1>Tri-orbit</h1>
+        <br><br>
+        This seems too small to call it its own project, so once I have more mini-demos like this, I'll merge them into one entry.
+        <br><br>
+        For now though, this is my first foray into using raw SVGs! I'm not sure if I really prefer them over the JS canvas, but it seems cleaner, in a way.
+        I can imagine something like this being used as a loading screen on a science-themed website.
+        <br><br>
+        <svg viewBox="0 0 100 100">
+            <g id="ge"
+               stroke="black"
+               fill="transparent"
+               stroke-width="2.5"
+               stroke-linecap="round"
+               transform="translate(50,50)">
+              <ellipse id="e0"
+                cx="0" cy="0"
+                rx="15" ry="45"
+                transform="rotate(0)"
+                stroke="green"
+              />
+              <ellipse id="e1"
+                cx="0" cy="0"
+                rx="15" ry="45"
+                transform="rotate(120)"
+                stroke="blue"
+              />
+              <ellipse id="e2"
+                cx="0" cy="0"
+                rx="15" ry="45"
+                transform="rotate(240)"
+                stroke="red"
+              />
+            </g>
+             <g id="gwl"
+               stroke="white"
+               fill="white"
+               stroke-width="5"
+               transform="translate(50,50)">
+              <line id="wl0"
+                x1=0 y1=0
+                x2=0 y2=0
+              />
+              <line id="wl1"
+                x1=0 y1=0
+                x2=0 y2=0
+              />
+              <line id="wl2"
+                x1=0 y1=0
+                x2=0 y2=0
+              />
+            </g>
+              <g id="gwc"
+               stroke="white"
+               fill="white"
+               stroke-width="2.5"
+               transform="translate(50,50)">
+              <circle id="wc0"
+                cx=0 cy=0
+                r=5.25
+              />
+              <circle id="wc1"
+                cx=0 cy=0
+                r=5.25
+              />
+              <circle id="wc2"
+                cx=0 cy=0
+                r=5.25
+              />
+            </g>
+             <g id="gl"
+               stroke="black"
+               fill="white"
+               stroke-width="2.5"
+               transform="translate(50,50)">
+              <line id="l0"
+                x1=0 y1=0
+                x2=0 y2=0
+              />
+              <line id="l1"
+                x1=0 y1=0
+                x2=0 y2=0
+              />
+              <line id="l2"
+                x1=0 y1=0
+                x2=0 y2=0
+              />
+            </g>
+              <g id="gc"
+               stroke="black"
+               fill="white"
+               stroke-width="2.5"
+               transform="translate(50,50)">
+              <circle id="c0"
+                cx=0 cy=0
+                r=4
+               stroke="green"
+              />
+              <circle id="c1"
+                cx=0 cy=0
+                r=4
+               stroke="blue"
+              />
+              <circle id="c2"
+                cx=0 cy=0
+                r=4
+               stroke="red"
+              />
+            </g>
+        </svg>
+    </div>
+    
+    <script>
+        ellipse_a = 45;
+        ellipse_b = 15;
+
+        function circle_pos(t, rot) {
+          rot -= 90;
+          rot *= -Math.PI/180;
+          let a=ellipse_a;
+          let b=ellipse_b;
+          return {
+            x: a*Math.cos(t)*Math.cos(rot)+b*Math.sin(t)*Math.sin(rot),
+            y: b*Math.sin(t)*Math.cos(rot)-a*Math.cos(t)*Math.sin(rot),
+          };
+          // return {
+          //   x: a*Math.cos(t),
+          //   y: a*Math.sin(t)
+          // };
+        }
+
+        let ge = document.getElementById("ge");
+        let gc = document.getElementById("gc");
+
+        let es = [];
+        for(let i = 0; i < 3; ++i) {
+          es.push(document.getElementById("e"+i));
+        }
+
+        let cs = [];
+        for(let i = 0; i < 3; ++i) {
+          cs.push(document.getElementById("c"+i));
+        }
+
+        let wcs = [];
+        for(let i = 0; i < 3; ++i) {
+          wcs.push(document.getElementById("wc"+i));
+        }
+
+        let ls = [];
+        for(let i = 0; i < 3; ++i) {
+          ls.push(document.getElementById("l"+i));
+        }
+
+        let wls = [];
+        for(let i = 0; i < 3; ++i) {
+          wls.push(document.getElementById("wl"+i));
+        }
+
+        let er = 0;
+        let t = 0;
+
+        function update() {
+          // for(let i = 0; i < 3; ++i) {
+          //   es[i].setAttribute(
+          //     "transform",
+          //     "rotate(" + er+i*30 + ")"
+          //   );
+          // }
+          ge.setAttribute(
+            "transform",
+            "translate(50,50) rotate(" + er + ")"
+          );
+          er += 0.5;
+          er %= 360;
+        
+          for(let i = 0; i < 3; ++i) {
+            let pos = circle_pos(t+2*Math.PI*i/3, er + i*120);
+            cs[i].setAttribute("cx", pos.x);
+            cs[i].setAttribute("cy", pos.y);
+
+            wcs[i].setAttribute("cx", pos.x);
+            wcs[i].setAttribute("cy", pos.y);
+          }
+          t += 0.03;
+
+          for(let i = 0; i < 3; ++i) {
+            ls[i].setAttribute("x1", cs[i].getAttribute("cx"));
+            ls[i].setAttribute("y1", cs[i].getAttribute("cy"));
+            ls[i].setAttribute("x2", cs[(i+1)%3].getAttribute("cx"));
+            ls[i].setAttribute("y2", cs[(i+1)%3].getAttribute("cy"));
+
+            wls[i].setAttribute("x1", cs[i].getAttribute("cx"));
+            wls[i].setAttribute("y1", cs[i].getAttribute("cy"));
+            wls[i].setAttribute("x2", cs[(i+1)%3].getAttribute("cx"));
+            wls[i].setAttribute("y2", cs[(i+1)%3].getAttribute("cy"));
+          }
+        }
+
+        setInterval(update, 17);
+    </script>
+</body>
